@@ -38,7 +38,7 @@ def play_to_nn(play):
         return 1
     elif play == 'PUNT':
         return 2
-    elif play == 'FG':
+    elif play == 'FIELD_GOAL':
         return 3
     elif play == 'KNEEL':
         return 4
@@ -48,3 +48,5 @@ def play_to_nn(play):
         return 6
     elif play == 'PENALTY':
         return 7
+    elif play == 'FUMBLE':
+        return 8

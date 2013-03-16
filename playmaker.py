@@ -14,11 +14,12 @@ KNEEL = 'KNEEL'
 PAT = 'PAT'
 PENALTY = 'PENALTY'
 SPIKE = 'SPIKE'
+FUMBLE = 'FUMBLE'
 
 # PLAY REGEX
 RUN_RE = re.compile('Run\sformation|' \
     '((left|right)\s(guard|tackle|end))|' \
-    'up\sthe\smiddle')
+    'up\sthe\smiddle|scrambles')
 PASS_RE = re.compile('pass|sacked')
 PUNT_RE = re.compile('punt|kicks')
 FG_RE = re.compile('field\sgoal')
@@ -26,6 +27,7 @@ KNEEL_RE = re.compile('kneels')
 PAT_RE = re.compile('extra\spoint')
 PENALTY_RE = re.compile('PENALTY')
 SPIKE_RE = re.compile('spiked\sthe\sball')
+FUMBLE_RE = re.compile('FUMBLES')
 
 def get_play_type(play):
     """
@@ -48,6 +50,8 @@ def get_play_type(play):
         return SPIKE
     elif PENALTY_RE.search(play):
         return PENALTY
+    elif FUMBLE_RE.search(play):
+        return FUMBLE
     else:
         raise Exception('COULD NOT FIND PLAY TYPE:%s' % play)
 
