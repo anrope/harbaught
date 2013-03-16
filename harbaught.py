@@ -1,15 +1,18 @@
 import parser
 import catchtwentytwo
+import pickle
 
-plays_2010 = parser.parse_foozball('data/2010_nfl_pbp_data.csv')
+#plays_2010 = parser.parse_foozball('data/2010_nfl_pbp_data.csv')
 plays_2011 = parser.parse_foozball('data/2011_nfl_pbp_data.csv')
 
 # Skip the first play because kickofflol
-in_2010, out_2010 = parser.plays_to_ml(plays_2010[1:])
+#in_2010, out_2010 = parser.plays_to_ml(plays_2010[1:])
 in_2011, out_2011 = parser.plays_to_ml(plays_2011[1:])
 
-pb = catchtwentytwo.get_playbook()
-catchtwentytwo.train(pb, in_2010, out_2010)
+#pb = catchtwentytwo.get_playbook()
+#catchtwentytwo.train(pb, in_2010, out_2010)
+
+pb = pickle.load(open('classifier.svc', 'rb'))
 
 same = 0
 different = 0
