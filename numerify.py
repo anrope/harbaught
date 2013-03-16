@@ -54,3 +54,5 @@ def play_to_nn(play):
         return 9
     elif play == 'REVIEW':
         return 10
+    elif play == 'TWO_PT_CONVERSION':
+        return 11
