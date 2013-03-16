@@ -42,7 +42,8 @@ PLAY_TO_VALUE = {
     'PENALTY': 7,
     'FUMBLE': 8,
     'INT': 9,
-    'REVIEW': 10
+    'REVIEW': 10,
+    'TWO_PT_CONVERSION': 11
 }
 
 VALUE_TO_PLAY = {v: k for k, v in PLAY_TO_VALUE.items()}
