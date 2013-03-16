@@ -1,4 +1,5 @@
 import csv
+import playmaker
 
 plays = []
 
@@ -21,7 +22,11 @@ with open('foozball_excerpt_2011.csv', 'rb') as foozball:
             'd_score': row[11],
             'season': row[12]
         }
-
+        try:
+            named['play_type'] = playmaker.get_play_type(named['play'])
+        except Exception, e:
+            print e
+            named['play_type'] = None
         plays.append(named)
 
 print len(plays)
