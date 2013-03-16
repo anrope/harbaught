@@ -4,6 +4,7 @@ import getopt
 import csv
 import playmaker
 import numerify
+import catchtwentytwo
 
 
 def parse_foozball(filename):
@@ -35,12 +36,18 @@ def parse_foozball(filename):
             }
 
             # cleaning ints
-            for x in ['down', 'to_go', 'minutes',
+            for x in ['down', 'to_go', 'minutes', 'yard_line',
             'quarter', 'o_score', 'd_score', 'seconds']:
                 try:
                     named[x] = int(named[x])
                 except:
                     named[x] = None
+
+            if not named['down']:
+                named['down'] = 0
+
+            if not named['to_go']:
+                named['to_go'] = 0
 
             #add valid plays
             try:
@@ -53,13 +60,25 @@ def parse_foozball(filename):
 
         print 'plays logged: %s' % len(plays)
 
-        for play in plays:
-            nn_input = {
-                'score': numerify.score_to_nn(play['o_score'], play['d_score']),
-                'quarter': numerify.quarter_to_nn(play['quarter']),
-                'time': numerify.time_to_nn(play['minutes'], play['seconds']),
-                'play': numerify.play_to_nn(play['play_type'])
-            }
+        return plays
+
+
+def plays_to_ml(plays):
+    train_in = []
+    train_out = []
+    for i in range(len(plays)):
+        play = plays[i]
+        train_in.append({
+            'score': numerify.score_to_value(play['o_score'], play['d_score']),
+            'quarter': numerify.quarter_to_value(play['quarter']),
+            'time': numerify.time_to_value(play['minutes'], play['seconds']),
+            'to_go': play['to_go'],
+            'yard_line': play['yard_line'],
+            'down': play['down']
+        }.values())
+        train_out.append(numerify.play_to_value(play['play_type']))
+
+    return train_in, train_out
 
 
 if __name__ == "__main__":
