@@ -4,7 +4,7 @@ import numerify
 
 plays = []
 
-with open('2010_nfl_pbp_data.csv', 'rb') as foozball:
+with open('foozball_excerpt_2011.csv', 'rb') as foozball:
     reader = csv.reader(foozball)
     for row in reader:
         #gameid,qtr,min,sec,off,def,down,togo,ydline,description,offscore,defscore,season
