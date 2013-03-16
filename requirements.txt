@@ -1,4 +1,4 @@
 tornado
 scipy
-pybrain
+scikit-learn
 requests
