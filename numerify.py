@@ -50,3 +50,7 @@ def play_to_nn(play):
         return 7
     elif play == 'FUMBLE':
         return 8
+    elif play == 'INT':
+        return 9
+    elif play == 'REVIEW':
+        return 10
