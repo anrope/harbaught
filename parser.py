@@ -54,7 +54,8 @@ def parse_foozball(filename):
                 named['play_type'] = playmaker.get_play_type(named['play'])
                 plays.append(named)
             except Exception, e:
-                print e
+                continue
+                #print e
                 #named['play_type'] = None
                 #plays.append(named)
 
