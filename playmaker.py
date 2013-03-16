@@ -1,3 +1,8 @@
+"""
+Playmaker
+=========
+Make and categorize plays.
+"""
 import re
 
 # PLAY TYPES
@@ -5,7 +10,7 @@ RUN = 'RUN',
 PASS = 'PASS',
 PUNT = 'PUNT',
 FG = 'FIELD_GOAL'
-up\sthe\middle
+
 # PLAY REGEX
 RUN_RE = re.compile('Run\sformation|' \
     '(left|right\sguard|tackle)|' \
