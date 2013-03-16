@@ -1,10 +1,10 @@
-def time_to_nn(minutes, second):
+def time_to_value(minutes, second):
     if minutes < 2:
         return 0
     else:
         return 1
 
-def score_to_nn(o_score, d_score):
+def score_to_value(o_score, d_score):
     margin = o_score - d_score
     if margin < 3:
         return 0
@@ -19,7 +19,7 @@ def score_to_nn(o_score, d_score):
     else:
         return 5
 
-def quarter_to_nn(quarter):
+def quarter_to_value(quarter):
     if quarter == 1:
         return 0
     elif quarter == 2:
@@ -31,26 +31,21 @@ def quarter_to_nn(quarter):
     else:
         return 2
 
-def play_to_nn(play):
-    if play == 'RUN':
-        return 0
-    elif play == 'PASS':
-        return 1
-    elif play == 'PUNT':
-        return 2
-    elif play == 'FIELD_GOAL':
-        return 3
-    elif play == 'KNEEL':
-        return 4
-    elif play == 'PAT':
-        return 5
-    elif play == 'SPIKE':
-        return 6
-    elif play == 'PENALTY':
-        return 7
-    elif play == 'FUMBLE':
-        return 8
-    elif play == 'INT':
-        return 9
-    elif play == 'REVIEW':
-        return 10
+PLAY_TO_VALUE = {
+    'RUN': 0,
+    'PASS': 1,
+    'PUNT': 2,
+    'FIELD_GOAL': 3,
+    'KNEEL': 4,
+    'PAT': 5,
+    'SPIKE': 6,
+    'PENALTY': 7,
+    'FUMBLE': 8,
+    'INT': 9,
+    'REVIEW': 10
+}
+
+VALUE_TO_PLAY = {v: k for k, v in PLAY_TO_VALUE.items()}
+
+def play_to_value(play):
+    return PLAY_TO_VALUE[play]
