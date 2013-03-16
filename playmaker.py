@@ -29,7 +29,7 @@ def get_play_type(play):
     elif PUNT_RE.match(play):
         return PUNT
     elif FG_RE.match(play):
-        return
+        return FG
     elif RUN_RE.match(play):
         return RUN
     else:
